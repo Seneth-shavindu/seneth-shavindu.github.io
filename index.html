@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affiliate Shop | Modern Dark Mode</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -149,9 +149,9 @@
             overflow-x: auto;
             padding-bottom: 1rem;
             margin-bottom: 2rem;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-        .categories-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+        .categories-container::-webkit-scrollbar { display: none; }
 
         .category-chip {
             background-color: var(--card-bg);
@@ -218,7 +218,7 @@
 
         .image-container {
             position: relative;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
+            padding-top: 100%;
             background-color: #0f172a;
         }
 
@@ -328,7 +328,7 @@
                 to right,
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.3) 50%,
-                rgba(255, 255, 255, 0) 100%
+                rgba(255, 255, 255, 0) 100++
             );
             transform: skewX(-25deg);
             transition: 0.75s;
@@ -409,20 +409,13 @@
             </div>
         </div>
 
-        <div class="categories-container" id="categoryContainer">
-            </div>
+        <div class="categories-container" id="categoryContainer"></div>
 
         <h2 class="grid-title"><i class="fa-solid fa-fire"></i> Explored Products</h2>
-        <div class="product-grid" id="productGrid">
-            </div>
+        <div class="product-grid" id="productGrid"></div>
     </main>
 
     <script>
-        /**
-         * ADMIN: EASY-EDIT PRODUCT DATABASE
-         * Simply edit, add, or delete elements in this array.
-         * Paste your Amazon/AliExpress raw affiliate links directly in the 'affiliateLink' field.
-         **/
         const products = [
             {
                 id: 1,
@@ -474,7 +467,6 @@
             }
         ];
 
-        // Core App Logic
         let currentCategory = "All";
         let searchQuery = "";
 
@@ -482,7 +474,6 @@
         const categoryContainer = document.getElementById('categoryContainer');
         const searchInput = document.getElementById('searchInput');
 
-        // Extract categories dynamically
         const categories = ["All", ...new Set(products.map(p => p.category))];
 
         function renderCategories() {
@@ -513,7 +504,6 @@
             }
 
             productGrid.innerHTML = filteredProducts.map(product => {
-                // Generate star ratings
                 let starsHtml = '';
                 for (let i = 1; i <= 5; i++) {
                     starsHtml += i <= Math.floor(product.rating) 
@@ -546,16 +536,13 @@
             }).join('');
         }
 
-        // Live Search Input Listener
         searchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value;
             renderProducts();
         });
 
-        // Initial Initialization
         renderCategories();
         renderProducts();
-  
-</script>
+    </script>
 </body>
 </html>
